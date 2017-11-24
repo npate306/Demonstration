@@ -5,7 +5,7 @@ import java.util.List;
  * Created by Neel Patel on 11/7/2017.
  */
 
-public class Result {
+public class Result{
 
     private Integer voteCount;
     private Integer id;

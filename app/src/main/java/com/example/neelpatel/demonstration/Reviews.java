@@ -3,6 +3,7 @@ package com.example.neelpatel.demonstration;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,36 +20,36 @@ import java.net.URLConnection;
 import java.nio.charset.Charset;
 
 /**
- * Created by Neel Patel on 11/7/2017.
+ * Created by Neel Patel on 11/24/2017.
  */
 
-public class Search extends Activity{
+public class Reviews extends Activity{
 
     private static String URL = "https://api.themoviedb.org/3/search/movie?" +
             "api_key=" + API_KEY.KEY + "&query=";
-    private RecyclerView recyclerView;
-    private Button search;
+    private RecyclerView apiRating;
+    private Button getReviews;
     private EditText movie;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search);
-        recyclerView = (RecyclerView) findViewById(R.id.recycle);
-        search = (Button) findViewById(R.id.button2);
-        movie = (EditText) findViewById(R.id.editText3);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        search.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.reviews);
+        apiRating = (RecyclerView) findViewById(R.id.apiRating);
+        apiRating.setLayoutManager(new LinearLayoutManager(this));
+        getReviews = (Button) findViewById(R.id.button8);
+        movie = (EditText) findViewById(R.id.editText4);
+        getReviews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String movieName = movie.getText().toString();
                 URL = URL + movieName;
-                SearchTask searchTask = new SearchTask();
-                searchTask.execute(URL);
+                ReviewsTask reviewsTask = new ReviewsTask();
+                reviewsTask.execute(URL);
             }
         });
     }
 
-    class SearchTask extends AsyncTask<String, Integer, Movies> {
+    class ReviewsTask extends AsyncTask<String, Integer, Movies> {
 
         private final String TAG = "Failure";
 
@@ -60,7 +61,7 @@ public class Search extends Activity{
         @Override
         protected Movies doInBackground(String... params) {
             try {
-                URL url = new URL(params[0]);
+                java.net.URL url = new URL(params[0]);
                 URLConnection connection = url.openConnection();
                 connection.connect();
                 InputStream inputStream = connection.getInputStream();
@@ -84,8 +85,9 @@ public class Search extends Activity{
             if (movies == null) {
                 return;
             }
-            Adapter adapter = new Adapter(movies.getResults(), R.layout.adapter);
-            recyclerView.setAdapter(adapter);
+            ApiRatingAdapter adapter = new ApiRatingAdapter(movies.getResults(),
+                    R.layout.reviewsadapter);
+            apiRating.setAdapter(adapter);
         }
     }
 }

@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_weight="0.15"
-        android:text="Nearby Movies" />
+        android:text="Reviews" />
 
     <Button
         android:id="@+id/button7"
@@ -44,16 +44,10 @@
         android:text="Watch Top movies" />
 
     <Button
-        android:id="@+id/button8"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_weight="0.14"
-        android:text="Get release dates" />
-
-    <Button
         android:id="@+id/button9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign out" />
+        android:text="Sign out"
+        android:layout_weight="0.13" />
 
 </LinearLayout>

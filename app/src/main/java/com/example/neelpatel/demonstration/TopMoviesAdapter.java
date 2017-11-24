@@ -15,7 +15,6 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.Popu
     private int rowLayout;
 
     public static class PopularMovieViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout moviesLayout;
         TextView movieTitle;
         TextView rating;
         TextView movieDescription;
