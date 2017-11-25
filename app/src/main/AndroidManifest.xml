@@ -21,6 +21,7 @@
         <activity android:name=".Reviews"></activity>
         <activity android:name=".WatchMovie"></activity>
         <activity android:name=".PopularMovies"></activity>
+        <activity android:name=".Rating"></activity>
     </application>
 
 </manifest>

@@ -23,6 +23,7 @@ public class HomePage extends Activity {
     private Button search;
     private Button watchTopMovies;
     private Button reviews;
+    private Button rateMovie;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +48,13 @@ public class HomePage extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HomePage.this, Reviews.class));
+            }
+        });
+        rateMovie = (Button) findViewById(R.id.button5);
+        rateMovie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomePage.this, Rating.class));
             }
         });
         signOut = (Button) findViewById(R.id.button9);
